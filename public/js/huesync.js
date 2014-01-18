@@ -6,6 +6,7 @@ $(function() {
   });
 
   $(document.body).click(function() {
+    console.log('touch detected');
     socket.emit('touch');
   });
 });
