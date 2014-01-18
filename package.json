@@ -1,0 +1,11 @@
+{
+  "name": "huesync",
+  "version": "0.0.0",
+  "description": "Realtime hue Sync",
+  "main": "index.js",
+  "dependencies": {
+    "express": "",
+    "socket.io": ""
+  },
+  "author": "Team huesync"
+}
