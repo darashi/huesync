@@ -14,9 +14,26 @@ app.configure(function() {
   app.use(express.static(__dirname + "/public"));
 });
 
+var Color = function() {
+  this.colors = ["#c00", "#0c0", "#00c"];
+  this.currentIndex = 0;
+};
+
+Color.prototype.next = function() {
+  this.currentIndex = (this.currentIndex + 1) % this.colors.length;
+  return this.current();
+};
+
+Color.prototype.current = function() {
+  return this.colors[this.currentIndex];
+};
+
+var color = new Color();
+
 io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
+  socket.emit('color', { color: color.current() });
+  socket.on('touch', function (data) {
+    color.next();
+    io.sockets.emit('color', { color: color.current() });
   });
 });
