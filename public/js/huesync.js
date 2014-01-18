@@ -5,7 +5,7 @@ $(function() {
     $(document.body).css({ backgroundColor: data.color });
   });
 
-  $(document.body).click(function() {
+  $(document.body).on("click touchstart", function() {
     console.log('touch detected');
     socket.emit('touch');
   });
