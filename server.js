@@ -14,8 +14,8 @@ app.configure(function() {
   app.use(express.static(__dirname + "/public"));
 });
 
-var Color = function() {
-  this.colors = ["#c00", "#0c0", "#00c"];
+var Color = function(colors) {
+  this.colors = colors;
   this.currentIndex = 0;
 };
 
@@ -28,7 +28,7 @@ Color.prototype.current = function() {
   return this.colors[this.currentIndex];
 };
 
-var color = new Color();
+var color = new Color(["#c00", "#0c0", "#00c"]);
 
 io.sockets.on('connection', function (socket) {
   socket.emit('color', { color: color.current() });
