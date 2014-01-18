@@ -23,7 +23,9 @@ julius.stdout.on('data', function (data) {
   if (match) {
     var recognized = match[1];
     console.log('RECOGNIZED: %s', recognized);
-    request.get(ENDPOINT + '/colors/' + recognized);
+    var url = ENDPOINT + '/colors/' + recognized;
+    console.log('SENDING: %s', url);
+    request.get(url);
   }
 //  console.log('RECEIVED: [%s]', data);
 });
