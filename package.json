@@ -6,7 +6,8 @@
   "dependencies": {
     "express": "",
     "socket.io": "",
-    "lodash": ""
+    "lodash": "",
+    "request": ""
   },
   "script": {
     "start": "node server.js"
