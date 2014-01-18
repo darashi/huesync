@@ -28,7 +28,19 @@ Color.prototype.current = function() {
   return this.colors[this.currentIndex];
 };
 
-var color = new Color(["#c00", "#0c0", "#00c"]);
+var colors = [
+  "#000000",
+  "#999999",
+  "#ea619c",
+  "#53bdee",
+  "#cae943",
+  "#004be5",
+  "#ee8530",
+  "#66b12e",
+  "#d83839",
+  "#f9cd41"
+];
+var color = new Color(colors);
 
 io.sockets.on('connection', function (socket) {
   socket.emit('color', { color: color.current() });
