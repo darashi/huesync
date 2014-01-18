@@ -10,3 +10,10 @@ $(function() {
     socket.emit('touch');
   });
 });
+
+$(window).on("load resize", function() {
+  $(document.body).css({
+    width:  window.innerWidth,
+    height: window.innerHeight
+  });
+});
