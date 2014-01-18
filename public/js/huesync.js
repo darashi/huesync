@@ -11,7 +11,7 @@ $(function() {
   });
 });
 
-$(window).on("load resize", function() {
+$(window).on("load resize orientationchange", function() {
   $(document.body).css({
     width:  window.innerWidth,
     height: window.innerHeight
