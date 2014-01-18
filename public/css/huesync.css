@@ -1,4 +1,9 @@
 body {
   margin: 0;
+  text-align: center;
   cursor: pointer;
+}
+
+img {
+  width: 80%;
 }

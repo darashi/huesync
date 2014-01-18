@@ -16,4 +16,8 @@ $(window).on("load resize", function() {
     width:  window.innerWidth,
     height: window.innerHeight
   });
+
+  $("#logo").css({
+    marginTop: ((window.innerHeight - $("#logo").height()) / 2)
+  });
 });
