@@ -34,8 +34,6 @@ Color.prototype.current = function() {
 };
 
 var colors = [
-  "#000000",
-  "#999999",
   "#ea619c",
   "#53bdee",
   "#cae943",
