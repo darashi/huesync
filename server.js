@@ -2,6 +2,7 @@ var express = require('express')
 var app = express();
 var server = require('http').createServer(app)
 var io = require('socket.io').listen(server);
+var _ = require('lodash');
 
 var env = process.env;
 var PORT = env.PORT || 3000;
@@ -33,6 +34,12 @@ Color.prototype.current = function() {
   return this.colors[this.currentIndex];
 };
 
+Color.prototype.set = function(id) {
+  var index = _.findLastIndex(this.colors, { 'id': id });
+  this.currentIndex = index;
+  return this.current();
+};
+
 var colors = [
   {id: "purple", code: "#aa83ec"},
   {id: "brown", code: "#a87446"},
@@ -53,4 +60,16 @@ io.sockets.on('connection', function (socket) {
     color.next();
     io.sockets.emit('color', { color: color.current().code });
   });
+});
+
+app.get('/colors/:id', function(req, res) {
+  var id = req.params.id;
+  result = color.set(id);
+  console.log(id);
+  if (result) {
+    io.sockets.emit('color', { color: color.current().code });
+    res.send(200, 'OK').end();
+  } else {
+    res.send(404, 'Color not found').end();
+  }
 });
