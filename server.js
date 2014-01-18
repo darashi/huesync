@@ -34,16 +34,16 @@ Color.prototype.current = function() {
 };
 
 var colors = [
-  {code: "#aa83ec"},
-  {code: "#a87446"},
-  {code: "#ea619c"},
-  {code: "#53bdee"},
-  {code: "#cae943"},
-  {code: "#004be5"},
-  {code: "#ee8530"},
-  {code: "#66b12e"},
-  {code: "#d83839"},
-  {code: "#f9cd41"}
+  {id: "purple", code: "#aa83ec"},
+  {id: "brown", code: "#a87446"},
+  {id: "pink", code: "#ea619c"},
+  {id: "water", code: "#53bdee"},
+  {id: "lightgreen", code: "#cae943"},
+  {id: "blue", code: "#004be5"},
+  {id: "orange", code: "#ee8530"},
+  {id: "green", code: "#66b12e"},
+  {id: "red", code: "#d83839"},
+  {id: "yellow", code: "#f9cd41"}
 ];
 var color = new Color(colors);
 
