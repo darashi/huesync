@@ -1,5 +1,5 @@
 $(function() {
-  var socket = io.connect('http://localhost');
+  var socket = io.connect();
   socket.on('color', function (data) {
     console.log(data);
     $(document.body).css({ backgroundColor: data.color });
