@@ -34,23 +34,23 @@ Color.prototype.current = function() {
 };
 
 var colors = [
-  "#aa83ec",
-  "#a87446",
-  "#ea619c",
-  "#53bdee",
-  "#cae943",
-  "#004be5",
-  "#ee8530",
-  "#66b12e",
-  "#d83839",
-  "#f9cd41"
+  {code: "#aa83ec"},
+  {code: "#a87446"},
+  {code: "#ea619c"},
+  {code: "#53bdee"},
+  {code: "#cae943"},
+  {code: "#004be5"},
+  {code: "#ee8530"},
+  {code: "#66b12e"},
+  {code: "#d83839"},
+  {code: "#f9cd41"}
 ];
 var color = new Color(colors);
 
 io.sockets.on('connection', function (socket) {
-  socket.emit('color', { color: color.current() });
+  socket.emit('color', { color: color.current().code });
   socket.on('touch', function (data) {
     color.next();
-    io.sockets.emit('color', { color: color.current() });
+    io.sockets.emit('color', { color: color.current().code });
   });
 });
