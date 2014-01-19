@@ -7,11 +7,6 @@ var _ = require('lodash');
 var env = process.env;
 var PORT = env.PORT || 3000;
 
-io.configure(function () {
-  io.set("transports", ["xhr-polling"]);
-  io.set("polling duration", 10);
-});
-
 server.listen(PORT, function() {
   console.log("huesync listening on " + PORT);
 });
