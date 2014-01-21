@@ -1,7 +1,7 @@
 $(function() {
   var socket = io.connect();
-  socket.on('color', function (data) {
-    $(document.body).css({ backgroundColor: data.color }).hide().fadeIn(300);
+  socket.on('color', function (color) {
+    $(document.body).css({ backgroundColor: color.code }).hide().fadeIn(300);
   });
 
   $(document.body).on("click touchstart", function() {

@@ -31,10 +31,10 @@ var colors = [
 var color = new Color(colors);
 
 io.sockets.on('connection', function (socket) {
-  socket.emit('color', { color: color.current().code });
+  socket.emit('color', color.current());
   socket.on('touch', function (data) {
     color.next();
-    io.sockets.emit('color', { color: color.current().code });
+    io.sockets.emit('color', color.current());
   });
 });
 
@@ -43,7 +43,7 @@ app.get('/colors/:id', function(req, res) {
   result = color.set(id);
   console.log(id);
   if (result) {
-    io.sockets.emit('color', { color: color.current().code });
+    io.sockets.emit('color', color.current());
     res.send(200, 'OK').end();
   } else {
     res.send(404, 'Color not found').end();
