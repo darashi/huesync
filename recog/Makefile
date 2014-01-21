@@ -1,0 +1,2 @@
+all:
+	mkdfa.pl huesync

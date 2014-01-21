@@ -1,3 +1,4 @@
+%COLOR
 red a k a
 water m i z u i r o
 green m i d o r i
@@ -8,4 +9,12 @@ yellow k i: r o
 purple m u r a s a k i
 brown t a i r o
 pink p i N k u
-off d e N k i o k e sh i t e
+%DENKIWO
+{denkiwo} d e N k i o
+%ONOFF
+off k e sh i t e
+on ts u k e t e
+%NS_B
+<s> silB
+%NS_E
+</s> silE

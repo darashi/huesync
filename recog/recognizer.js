@@ -2,7 +2,7 @@ var spawn = require('child_process').spawn;
 var request = require('request');
 
 var juliusDir = '/usr/local/opt/julius-dictation-kit';
-var opt_w = __dirname + '/color.dict';
+var opt_w = __dirname + '/huesync.dict';
 var opt_h = juliusDir + '/share/model/phone_m/hmmdefs_ptm_gid.binhmm';
 var opt_hlist = juliusDir + '/share/model/phone_m/logicalTri';
 
