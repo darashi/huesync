@@ -2,7 +2,8 @@ var express = require('express')
 var app = express();
 var server = require('http').createServer(app)
 var io = require('socket.io').listen(server);
-var _ = require('lodash');
+
+var Color = require('./lib/color');
 
 var env = process.env;
 var PORT = env.PORT || 3000;
@@ -14,26 +15,6 @@ server.listen(PORT, function() {
 app.configure(function() {
   app.use(express.static(__dirname + "/public"));
 });
-
-var Color = function(colors) {
-  this.colors = colors;
-  this.currentIndex = 0;
-};
-
-Color.prototype.next = function() {
-  this.currentIndex = (this.currentIndex + 1) % this.colors.length;
-  return this.current();
-};
-
-Color.prototype.current = function() {
-  return this.colors[this.currentIndex];
-};
-
-Color.prototype.set = function(id) {
-  var index = _.findLastIndex(this.colors, { 'id': id });
-  this.currentIndex = index;
-  return this.current();
-};
 
 var colors = [
   {id: "purple", code: "#aa83ec"},
