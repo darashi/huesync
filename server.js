@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 var express = require('express')
 var app = express();
 var server = require('http').createServer(app)
@@ -16,18 +18,7 @@ app.configure(function() {
   app.use(express.static(__dirname + "/public"));
 });
 
-var colors = [
-  {id: "purple", code: "#aa83ec"},
-  {id: "brown", code: "#a87446"},
-  {id: "pink", code: "#ea619c"},
-  {id: "water", code: "#53bdee"},
-  {id: "lightgreen", code: "#cae943"},
-  {id: "blue", code: "#004be5"},
-  {id: "orange", code: "#ee8530"},
-  {id: "green", code: "#66b12e"},
-  {id: "red", code: "#d83839"},
-  {id: "yellow", code: "#f9cd41"}
-];
+var colors = JSON.parse(fs.readFileSync(__dirname + '/colors.json'));
 var color = new Color(colors);
 
 io.configure(function () {
