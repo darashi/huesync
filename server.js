@@ -53,7 +53,6 @@ io.sockets.on('connection', function (socket) {
 app.get('/colors/:id', function(req, res) {
   var id = req.params.id;
   result = color.set(id);
-  console.log(id);
   if (result) {
     io.sockets.emit('color', color.current());
     res.send(200, 'OK').end();
