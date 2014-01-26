@@ -1,0 +1,10 @@
+{
+  "name": "arduino-huesync",
+  "version": "0.0.0",
+  "description": "",
+  "dependencies": {
+    "socket.io-client": "",
+    "serialport": "",
+    "onecolor": ""
+  }
+}
