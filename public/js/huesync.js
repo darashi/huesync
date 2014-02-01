@@ -6,6 +6,12 @@ $(function() {
     $(document.body).css({ backgroundColor: color.code }).hide().fadeIn(300);
   });
 
+  socket.on('blink', function () {
+    $('#logo').removeClass().addClass('animated bounce').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+      $(this).removeClass();
+    });
+  });
+
   $(document.body).on("click touchstart", function() {
     lastTouched = new Date();
     console.log('touch detected');
