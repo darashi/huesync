@@ -1,3 +1,5 @@
+var lastTouched = new Date();
+
 $(function() {
   var socket = io.connect();
   socket.on('color', function (color) {
@@ -5,8 +7,16 @@ $(function() {
   });
 
   $(document.body).on("click touchstart", function() {
+    lastTouched = new Date();
     console.log('touch detected');
     socket.emit('touch');
+  });
+
+  $(document.body).on("touchend", function() {
+    if (new Date() - lastTouched > 2000) {
+      console.log('blink detected');
+      socket.emit('blink');
+    }
   });
 });
 
