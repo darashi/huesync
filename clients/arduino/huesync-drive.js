@@ -3,8 +3,8 @@ var color = require('onecolor');
 var SerialPort = require('serialport').SerialPort;
 var io = require('socket.io-client');
 
-var device = '/dev/tty.usbmodemfd13241'; // TODO configurable
-var endpoint = 'http://huesync.herokuapp.com/'; // TODO configurable
+var device = '/dev/tty.usbmodem1411'; // TODO configurable
+var endpoint = process.env.ENDPOINT || 'http://localhost:3000/';
 
 var serialPort = new SerialPort(device, {
   baudrate: 9600
