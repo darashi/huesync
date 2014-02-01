@@ -42,6 +42,7 @@ $(window).on('load resize orientationchange', function() {
   });
 
   $('#logo').css({
-    marginTop: ((window.innerHeight - $('#logo').height()) / 2)
+    top:  ((window.innerHeight - $('#logo').height()) / 2),
+    left: ((window.innerWidth  - $('#logo').width())  / 2)
   });
 });

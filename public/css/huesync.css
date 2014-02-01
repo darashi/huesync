@@ -4,8 +4,9 @@ body {
   cursor: pointer;
 }
 
-img {
+#logo {
   width: 80%;
+  position: absolute;
 }
 
 #blackout {
