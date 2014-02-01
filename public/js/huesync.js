@@ -3,13 +3,15 @@ $(function() {
 
   var socket = io.connect();
   socket.on('color', function (color) {
-    $(document.body).css({ backgroundColor: color.code }).hide().fadeIn(300);
+    $('#wrapper').css({ backgroundColor: color.code }).hide().fadeIn(300);
   });
 
   socket.on('blink', function () {
     $('#logo').removeClass().addClass('animated bounce').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
       $(this).removeClass();
     });
+
+    $('#wrapper').css({ opacity: 0.25 }).animate({ opacity: 1.0 }, 500);
   });
 
   $(document.body).on("touchstart mousedown", function() {
@@ -30,13 +32,13 @@ $(function() {
   });
 });
 
-$(window).on("load resize orientationchange", function() {
-  $(document.body).css({
+$(window).on('load resize orientationchange', function() {
+  $('#wrapper').css({
     width:  window.innerWidth,
     height: window.innerHeight
   });
 
-  $("#logo").css({
-    marginTop: ((window.innerHeight - $("#logo").height()) / 2)
+  $('#logo').css({
+    marginTop: ((window.innerHeight - $('#logo').height()) / 2)
   });
 });
