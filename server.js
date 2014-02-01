@@ -39,6 +39,10 @@ io.sockets.on('connection', function (socket) {
     color.next();
     io.sockets.emit('color', color.current());
   });
+
+  socket.on('blink', function(data) {
+    io.sockets.emit('blink');
+  });
 });
 
 app.get('/colors/:id', function(req, res) {
