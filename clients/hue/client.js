@@ -49,7 +49,8 @@ socket.on('color', function(data) {
   var state = hue.lightState.create()
     .on()
     .hsl(h, s, l)
-    .transition(0);
+    .transition(0)
+    .effect('none');
 
   setLightsState(state);
 });
