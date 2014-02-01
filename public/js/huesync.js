@@ -15,7 +15,7 @@ $(function() {
     $('#blackout').css({ opacity: 0.8 }).animate({ opacity: 0 }, 500);
   });
 
-  $(document.body).on('touchstart mousedown', function() {
+  $(document.body).on('mousedown', function() {
     console.log('touch detected');
     blinked = false;
 
@@ -27,7 +27,7 @@ $(function() {
     }, 1500);
   });
 
-  $(document.body).on('touchend mouseup', function() {
+  $(document.body).on('mouseup', function() {
     if (timer) {
       clearInterval(timer);
     }
