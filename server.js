@@ -35,7 +35,7 @@ io.configure(function () {
 
 io.sockets.on('connection', function (socket) {
   socket.emit('color', color.current());
-  socket.on('touch', function (data) {
+  socket.on('next-color', function (data) {
     color.next();
     io.sockets.emit('color', color.current());
   });
