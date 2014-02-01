@@ -39,7 +39,9 @@ function setLightsState(state) {
 socket.on('color', function(data) {
   console.log('RECEIVED: %j', data);
   var c = color(data.code);
-  var state = hue.lightState.create().on().rgb(c.r(), c.g(), c.b()).brightness(100);
+  var state = hue.lightState.create()
+    .on().rgb(c.r(), c.g(), c.b()).brightness(100)
+    .transition(0);
 
   setLightsState(state);
 });
