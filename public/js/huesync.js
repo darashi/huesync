@@ -11,7 +11,7 @@ $(function() {
       $(this).removeClass();
     });
 
-    $('#blackout').css({ opacity: 1.0 }).animate({ opacity: 0 }, 500);
+    $('#blackout').css({ opacity: 0.8 }).animate({ opacity: 0 }, 500);
   });
 
   $(document.body).on("touchstart mousedown", function() {
