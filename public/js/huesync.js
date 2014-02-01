@@ -2,6 +2,21 @@ $(function() {
   var timer;
   var blinked;
 
+  var events = {};
+  if (Modernizr.touch) {
+    events = {
+      down: 'touchstart',
+      up:   'touchend'
+    };
+  } else {
+    events = {
+      down: 'mousedown',
+      up:   'mouseup'
+    };
+  }
+
+  console.log("modinzer", Modernizr.touch);
+
   var socket = io.connect();
   socket.on('color', function (color) {
     $(document.body).css({ backgroundColor: color.code }).hide().fadeIn(300);
@@ -15,7 +30,7 @@ $(function() {
     $('#blackout').css({ opacity: 0.8 }).animate({ opacity: 0 }, 500);
   });
 
-  $(document.body).on('mousedown', function() {
+  $(document.body).on(events.down, function() {
     console.log('touch detected');
     blinked = false;
 
@@ -27,7 +42,7 @@ $(function() {
     }, 1500);
   });
 
-  $(document.body).on('mouseup', function() {
+  $(document.body).on(events.up, function() {
     if (timer) {
       clearInterval(timer);
     }
