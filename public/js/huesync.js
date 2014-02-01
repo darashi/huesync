@@ -1,5 +1,6 @@
 $(function() {
   var timer;
+  var blinked;
 
   var socket = io.connect();
   socket.on('color', function (color) {
@@ -16,19 +17,21 @@ $(function() {
 
   $(document.body).on('touchstart mousedown', function() {
     console.log('touch detected');
+    blinked = false;
 
     if (timer) clearInterval(timer);
     timer = setInterval(function() {
       console.log('blink detected');
       socket.emit('blink');
+      blinked = true;
     }, 1500);
   });
 
   $(document.body).on('touchend mouseup', function() {
     if (timer) {
       clearInterval(timer);
-      timer = null;
-    } else {
+    }
+    if (!blinked) {
       console.log('next color');
       socket.emit('next-color');
     }
