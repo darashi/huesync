@@ -1,0 +1,14 @@
+{
+  "name": "huesync",
+  "version": "0.0.0",
+  "description": "Realtime hue Sync",
+  "main": "index.js",
+  "dependencies": {
+    "socket.io-client": "",
+    "node-hue-api": ""
+  },
+  "script": {
+    "start": "node client.js"
+  },
+  "author": "Team huesync"
+}
