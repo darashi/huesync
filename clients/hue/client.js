@@ -5,7 +5,7 @@ var _ = require('lodash');
 
 var HueApi = hue.HueApi;
 
-var endpoint = 'http://huesync.herokuapp.com/'; // TODO configurable
+var endpoint = process.env.ENDPOINT || 'http://localhost:3000/';
 
 var host = "192.168.2.2", // TODO customizable
   username = "1234567890", // TODO customizable
@@ -34,6 +34,7 @@ socket.on('color', function(data) {
   _.forEach(lightIds, function(lightId) {
     api.setLightState(lightId, state)
       .then(displayResults)
+      .fail(function(err) { console.log(err); })
       .done();
   });
 });
