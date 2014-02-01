@@ -7,3 +7,11 @@ body {
 img {
   width: 80%;
 }
+
+#blackout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0;
+}

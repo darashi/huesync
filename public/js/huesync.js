@@ -3,7 +3,7 @@ $(function() {
 
   var socket = io.connect();
   socket.on('color', function (color) {
-    $('#wrapper').css({ backgroundColor: color.code }).hide().fadeIn(300);
+    $(document.body).css({ backgroundColor: color.code }).hide().fadeIn(300);
   });
 
   socket.on('blink', function () {
@@ -11,7 +11,7 @@ $(function() {
       $(this).removeClass();
     });
 
-    $('#wrapper').css({ opacity: 0.25 }).animate({ opacity: 1.0 }, 500);
+    $('#blackout').css({ opacity: 1.0 }).animate({ opacity: 0 }, 500);
   });
 
   $(document.body).on("touchstart mousedown", function() {
@@ -36,7 +36,7 @@ $(function() {
 });
 
 $(window).on('load resize orientationchange', function() {
-  $('#wrapper').css({
+  $('body, #blackout').css({
     width:  window.innerWidth,
     height: window.innerHeight
   });
