@@ -12,7 +12,7 @@ $(function() {
     });
   });
 
-  $(document.body).on("touchstart", function() {
+  $(document.body).on("touchstart mousedown", function() {
     console.log('touch detected');
     socket.emit('touch');
 
@@ -23,7 +23,7 @@ $(function() {
     }, 1500);
   });
 
-  $(document.body).on("touchend", function() {
+  $(document.body).on("touchend mouseup", function() {
     if (timer) {
       clearInterval(timer);
     }
