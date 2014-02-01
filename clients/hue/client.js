@@ -6,6 +6,7 @@ var _ = require('lodash');
 var HueApi = hue.HueApi;
 
 var endpoint = process.env.ENDPOINT || 'http://localhost:3000/';
+console.log("Endpoint: %s", endpoint);
 
 var host = "192.168.2.2", // TODO customizable
   username = "1234567890", // TODO customizable
