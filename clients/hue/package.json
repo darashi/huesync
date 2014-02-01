@@ -5,7 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "socket.io-client": "",
-    "node-hue-api": ""
+    "node-hue-api": "",
+    "onecolor": "",
+    "lodash": ""
   },
   "script": {
     "start": "node client.js"

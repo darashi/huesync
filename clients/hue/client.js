@@ -1,5 +1,11 @@
 var hue = require("node-hue-api");
+var io = require('socket.io-client');
+var color = require('onecolor');
+var _ = require('lodash');
+
 var HueApi = hue.HueApi;
+
+var endpoint = 'http://huesync.herokuapp.com/'; // TODO configurable
 
 var host = "192.168.2.2", // TODO customizable
   username = "1234567890", // TODO customizable
@@ -13,8 +19,21 @@ api.lights()
   .then(displayResults)
   .done();
 
-var state = hue.lightState.create().off();
+var lightIds = [1, 2, 3]; // TODO configurable
 
-api.setLightState(1, state)
-  .then(displayResults)
-  .done();
+var socket = io.connect(endpoint);
+socket.on('connect', function() {
+  console.log('Connected to ' + endpoint);
+});
+
+socket.on('color', function(data) {
+  console.log('RECEIVED: %j', data);
+  var c = color(data.code);
+  var state = hue.lightState.create().on().rgb(c.r(), c.g(), c.b()).brightness(100);
+
+  _.forEach(lightIds, function(lightId) {
+    api.setLightState(lightId, state)
+      .then(displayResults)
+      .done();
+  });
+});
