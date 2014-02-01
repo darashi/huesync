@@ -27,15 +27,24 @@ socket.on('connect', function() {
   console.log('Connected to ' + endpoint);
 });
 
-socket.on('color', function(data) {
-  console.log('RECEIVED: %j', data);
-  var c = color(data.code);
-  var state = hue.lightState.create().on().rgb(c.r(), c.g(), c.b()).brightness(100);
-
+function setLightsState(state) {
   _.forEach(lightIds, function(lightId) {
     api.setLightState(lightId, state)
       .then(displayResults)
       .fail(function(err) { console.log(err); })
       .done();
   });
+};
+
+socket.on('color', function(data) {
+  console.log('RECEIVED: %j', data);
+  var c = color(data.code);
+  var state = hue.lightState.create().on().rgb(c.r(), c.g(), c.b()).brightness(100);
+
+  setLightsState(state);
+});
+
+socket.on('alert', function(data) {
+  var state = hue.lightState.create().alert();
+  setLightsState(state);
 });
