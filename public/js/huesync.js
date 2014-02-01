@@ -16,7 +16,6 @@ $(function() {
 
   $(document.body).on("touchstart mousedown", function() {
     console.log('touch detected');
-    socket.emit('touch');
 
     if (timer) clearInterval(timer);
     timer = setInterval(function() {
@@ -29,6 +28,8 @@ $(function() {
     if (timer) {
       clearInterval(timer);
     }
+    console.log('next color');
+    socket.emit('next-color');
   });
 });
 
