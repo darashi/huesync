@@ -9,13 +9,15 @@ $(function() {
   $(document.body).on("click touchstart", function() {
     lastTouched = new Date();
     console.log('touch detected');
-    socket.emit('touch');
   });
 
   $(document.body).on("touchend", function() {
     if (new Date() - lastTouched > 2000) {
-      console.log('blink detected');
+      console.log('judged long touch: emit blink');
       socket.emit('blink');
+    } else {
+      console.log('judged short touch: emit touch');
+      socket.emit('touch');
     }
   });
 });
