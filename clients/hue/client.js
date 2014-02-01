@@ -46,7 +46,8 @@ socket.on('color', function(data) {
   setLightsState(state);
 });
 
-socket.on('blink', function(data) {
+socket.on('blink', function() {
+  console.log('RECEIVED: blink');
   var state = hue.lightState.create().alert();
   setLightsState(state);
 });
