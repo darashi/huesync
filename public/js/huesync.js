@@ -27,9 +27,11 @@ $(function() {
   $(document.body).on("touchend mouseup", function() {
     if (timer) {
       clearInterval(timer);
+      timer = null;
+    } else {
+      console.log('next color');
+      socket.emit('next-color');
     }
-    console.log('next color');
-    socket.emit('next-color');
   });
 });
 
