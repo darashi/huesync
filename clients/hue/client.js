@@ -40,7 +40,7 @@ socket.on('color', function(data) {
   console.log('RECEIVED: %j', data);
   var c = color(data.code);
 
-  var h = c.hue() * 360;
+  var h = Math.floor(c.hue() * 360);
   var s = 100;
   var l = 100;
 
